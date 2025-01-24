@@ -1,3 +1,6 @@
+import { cart } from "../data/cart.js";
+
+
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -41,7 +44,7 @@ products.forEach((product) => {
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart">
+      <div class="added-to-cart js-added-to-cart-${product.id}">
         <img src="images/icons/checkmark.png">
         Added
       </div>
@@ -70,6 +73,14 @@ document.querySelector(".js-products-grid")
           matchingItem = item;
         }
       });
+
+      document.querySelector(`.js-added-to-cart-${productId}`)
+       .classList.add('js-added-to-cart');
+
+       setTimeout(() => {
+         document.querySelector(`.js-added-to-cart-${productId}`)
+           .classList.remove("js-added-to-cart");
+       }, 2000)
 
      const selectorElement = document.querySelector(`.js-quantity-selector-${productId}`);
      const selectorQuantity = Number(selectorElement.value);
