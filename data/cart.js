@@ -60,3 +60,24 @@ function saveToStorage() {
   cart = newCart;
   saveToStorage();
  }
+
+export function calculateCartQuantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((CartItem) => {
+    cartQuantity += CartItem.quantity;
+  });
+
+  return cartQuantity;
+}
+
+export function updateQuantity(productId, newQantity) {
+  let matchingItem;
+ cart.forEach((cartItem) => {
+    if (productId === cartItem.productId){
+      matchingItem = cartItem;
+       matchingItem.quantity = newQantity;
+       saveToStorage();
+    }
+ })
+}
