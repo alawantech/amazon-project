@@ -100,6 +100,13 @@ export function updateDeliveryOption(productId, deliveryOptionId) {
 }
 
 
+ export async function loadCartFetch() {
+  const promise = await fetch("https://supersimplebackend.dev/cart");
+  const response = await promise.text();
+  console.log(response);
+}
+
+
 export function loadCart(fun) {
  const xhr = new XMLHttpRequest();
 

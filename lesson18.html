@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 18</title>
+</head>
+<body>
+  
+  <script>
+    
+    async function greeting() {
+
+      try{
+
+      
+      const response = await fetch('https:supersimplebackend.dev/greeting', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      if (response.status >= 400) {
+        throw response;
+      }
+
+      const res = await response.text();
+      console.log(text);
+
+    } catch(error) {
+      if (error.status === 400) {
+        const errorMessage = await error.json();
+        console.log(errorMessage);
+      }else {
+        console.log('Network error');
+      }
+    }
+    }
+    greeting();
+
+
+    /*
+     fetch('https://amazon.com').then((response) => {
+       return response.text();
+    }).then((greeting) => {
+      console.log(greeting);
+    }).catch((error) => {
+      console.log('unexpected error', error);
+    });
+    */
+
+/*
+    async function greeting() {
+      const response = await fetch('https:supersimplebackend.dev/greeting', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: 'Abubakar Lawan'
+        })
+      });
+
+      const gret = await response.text();
+      console.log(gret);
+    }
+    greeting();
+    */ 
+
+
+/*
+    async function greeting() {
+      const response = await fetch('https:supersimplebackend.dev/greeting');
+       gret = await response.text();
+       console.log(gret);
+    }
+    greeting();
+    */
+
+/*
+
+     fetch('https:supersimplebackend.dev/greeting').then((response) => {
+       return response.text();
+    }).then((greeting) => {
+      console.log(greeting);
+    });
+*/
+
+
+    /*
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener('load', () => {
+      console.log(xhr.response);
+    });
+
+    xhr.open('GET', 'https:supersimplebackend.dev/greeting');
+    xhr.send();
+    */
+  </script>
+</body>
+</html>
